@@ -1,0 +1,9 @@
+| Route | Purpose |
+|-------|---------|
+|home|landing page (hero, example products, reviews)|
+|products|list of all products|
+|products/product-name|page for particular product|
+|cart|shopping cart|
+|checkout|multi-step check out|
+|order|show order confirmation and tracking|
+|faq|FAQ page - what age, return policy|
