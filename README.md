@@ -4,7 +4,7 @@
 |about|who we are, why did we start|
 |products/|list of all products|
 |products/product-name|page for particular product|
-|educational resources|youtube playlists for each toy|
+|educational_resources|youtube playlists for each toy|
 |cart/|shopping cart|
 |checkout/|multi-step check out|
 |order/|show order confirmation and tracking|
