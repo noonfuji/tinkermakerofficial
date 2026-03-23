@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tinker Maker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #3c5b91;
+      --pink: #eba9a7;
+      --pink-light: #f5c4c0;
+      --bg: #fafafa;
+      --bg-hero: #f9f3f2;
+      --text: #3c5b91;
+      --gray: #8a8fa8;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+    }
+
+    .logo {
+      height: 80px;
+      max-width: 500px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray);
+      font-weight: 600;
+      font-size: 1.3rem;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover { color: var(--navy); }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0; right: 0;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+    }
+
+    .cart-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--navy);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .cart-icon {
+      width: 36px; height: 36px;
+      background: var(--navy);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      transition: transform 0.2s;
+    }
+
+    .cart-btn:hover .cart-icon { transform: scale(1.1); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--bg-hero);
+      text-align: center;
+      padding: 64px 40px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-family: 'Artifakt Element Black', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      max-width: 900px;
+      margin: 0 auto 16px;
+      animation: fadeDown 0.7s ease both;
+    }
+
+    .hero h1 span { color: var(--pink); }
+
+    .hero p {
+      color: var(--gray);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 32px;
+      animation: fadeDown 0.7s ease 0.15s both;
+    }
+
+    .hero .btn-primary {
+      animation: fadeDown 0.7s ease 0.3s both;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 40px;
+      border: 2.5px solid var(--pink);
+      color: var(--pink);
+      background: transparent;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--pink);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* ── PRODUCT SHOWCASE ── */
+    .products-arc {
+      background: linear-gradient(180deg, var(--bg-hero) 0%, #efe8e7 100%);
+      padding: 48px 60px 56px;
+      position: relative;
+    }
+
+    .products-arc::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      height: 320px;
+      background: rgba(255,255,255,0.45);
+      border-radius: 0 0 50% 50%;
+      z-index: 0;
+    }
+
+    .products-grid {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      width: 180px;
+      animation: floatUp 0.6s ease both;
+    }
+
+    .product-card:nth-child(1) { animation-delay: 0.1s; }
+    .product-card:nth-child(2) { animation-delay: 0.25s; }
+    .product-card:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .product-img-wrap {
+      width: 160px; height: 160px;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover .product-img-wrap { transform: translateY(-6px) scale(1.04); }
+
+    .product-img-wrap svg {
+      width: 140px; height: 140px;
+    }
+
+    .product-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-align: center;
+    }
+
+    .btn-cart {
+      padding: 9px 24px;
+      background: var(--pink);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-cart:hover {
+      background: #d96b62;
+      transform: translateY(-2px);
+    }
+
+    /* ── ABOUT SECTION ── */
+    .about {
+      background: #fff;
+      text-align: center;
+      padding: 64px 40px;
+    }
+
+    .about h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+
+    .about p {
+      color: var(--gray);
+      font-size: 1rem;
+      font-weight: 600;
+      max-width: 380px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 24px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    footer span { color: var(--pink-light); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo"><img src="public/logo/logo.png" alt="Tinker Maker Logo"></div>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">Shop</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <button class="cart-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <div class="cart-icon">0</div>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1><span>Physics</span> and <span>Engineering </span> Toys <br> for the <span>Curious Minds</span></h1>
+    <!-- <p>Have fun learning STEM principles with our interactive toys!</p> -->
+    <a href="#" class="btn-primary">Shop Now</a>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products-arc">
+    <div class="products-grid">
+
+      <!-- Cannon Blast -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="72" width="72" height="48" rx="4" stroke="#2d3a6b" stroke-width="2.2" fill="white"/>
+            <rect x="28" y="80" width="20" height="28" rx="2" stroke="#2d3a6b" stroke-width="1.5" fill="#f5f5f5"/>
+            <circle cx="34" cy="122" r="9" stroke="#2d3a6b" stroke-width="2" fill="white"/>
+            <circle cx="34" cy="122" r="3" fill="#2d3a6b"/>
+            <circle cx="74" cy="122" r="9" stroke="#2d3a6b" stroke-width="2" fill="white"/>
+            <circle cx="74" cy="122" r="3" fill="#2d3a6b"/>
+            <rect x="60" y="54" width="58" height="20" rx="10" stroke="#2d3a6b" stroke-width="2" fill="white" transform="rotate(-20 60 64)"/>
+            <path d="M88 38 Q92 34 96 38 Q100 42 104 38 Q108 34 112 38" stroke="#e8837a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <circle cx="112" cy="30" r="9" fill="#e8837a" opacity="0.85"/>
+          </svg>
+        </div>
+        <div class="product-name">Cannon Blast</div>
+        <button class="btn-cart">Add to Cart</button>
+      </div>
+
+      <!-- Rocket Ferris Wheel -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="70" cy="68" r="50" stroke="#2d3a6b" stroke-width="2.2" fill="none"/>
+            <circle cx="70" cy="68" r="10" stroke="#2d3a6b" stroke-width="2" fill="white"/>
+            <line x1="70" y1="18" x2="70" y2="58" stroke="#2d3a6b" stroke-width="1.5"/>
+            <line x1="70" y1="78" x2="70" y2="118" stroke="#2d3a6b" stroke-width="1.5"/>
+            <line x1="20" y1="68" x2="60" y2="68" stroke="#2d3a6b" stroke-width="1.5"/>
+            <line x1="80" y1="68" x2="120" y2="68" stroke="#2d3a6b" stroke-width="1.5"/>
+            <line x1="35" y1="33" x2="63" y2="61" stroke="#2d3a6b" stroke-width="1.5"/>
+            <line x1="77" y1="75" x2="105" y2="103" stroke="#2d3a6b" stroke-width="1.5"/>
+            <line x1="105" y1="33" x2="77" y2="61" stroke="#2d3a6b" stroke-width="1.5"/>
+            <line x1="63" y1="75" x2="35" y2="103" stroke="#2d3a6b" stroke-width="1.5"/>
+            <g transform="translate(62,6)"><rect x="0" y="0" width="16" height="22" rx="8" fill="#e8837a" opacity="0.8"/><polygon points="8,0 14,8 2,8" fill="#2d3a6b" opacity="0.6"/></g>
+            <g transform="translate(62,106)"><rect x="0" y="0" width="16" height="22" rx="8" fill="#e8837a" opacity="0.8"/><polygon points="8,0 14,8 2,8" fill="#2d3a6b" opacity="0.6"/></g>
+            <g transform="translate(6,60)"><rect x="0" y="0" width="16" height="22" rx="8" fill="white" stroke="#2d3a6b" stroke-width="1.5"/></g>
+            <g transform="translate(118,60)"><rect x="0" y="0" width="16" height="22" rx="8" fill="white" stroke="#2d3a6b" stroke-width="1.5"/></g>
+            <line x1="70" y1="118" x2="70" y2="136" stroke="#2d3a6b" stroke-width="2.5"/>
+            <line x1="50" y1="136" x2="90" y2="136" stroke="#2d3a6b" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="product-name">Rocket Ferris Wheel</div>
+        <button class="btn-cart">Add to Cart</button>
+      </div>
+
+      <!-- Gear Car -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="72" width="120" height="40" rx="6" stroke="#2d3a6b" stroke-width="2" fill="rgba(200,210,230,0.25)"/>
+            <path d="M36 72 L50 46 L90 46 L104 72" stroke="#2d3a6b" stroke-width="2" fill="rgba(200,210,230,0.2)"/>
+            <rect x="54" y="50" width="14" height="16" rx="2" fill="rgba(200,230,255,0.6)" stroke="#2d3a6b" stroke-width="1.2"/>
+            <rect x="72" y="50" width="14" height="16" rx="2" fill="rgba(200,230,255,0.6)" stroke="#2d3a6b" stroke-width="1.2"/>
+            <circle cx="36" cy="114" r="16" stroke="#2d3a6b" stroke-width="2" fill="rgba(255,255,255,0.6)"/>
+            <circle cx="36" cy="114" r="8" stroke="#2d3a6b" stroke-width="1.5" fill="white"/>
+            <circle cx="104" cy="114" r="16" stroke="#2d3a6b" stroke-width="2" fill="rgba(255,255,255,0.6)"/>
+            <circle cx="104" cy="114" r="8" stroke="#2d3a6b" stroke-width="1.5" fill="white"/>
+            <circle cx="70" cy="90" r="14" stroke="#e8837a" stroke-width="1.8" fill="none" stroke-dasharray="5 3"/>
+            <circle cx="70" cy="90" r="5" fill="#e8837a" opacity="0.5"/>
+            <circle cx="90" cy="90" r="9" stroke="#2d3a6b" stroke-width="1.5" fill="none" stroke-dasharray="4 2"/>
+            <circle cx="90" cy="90" r="3" fill="#2d3a6b" opacity="0.4"/>
+            <circle cx="52" cy="88" r="8" stroke="#2d3a6b" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+          </svg>
+        </div>
+        <div class="product-name">Gear Car</div>
+        <button class="btn-cart">Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <h2>Welcome to Tinker Maker!</h2>
+    <p>Educational toys that make physics and engineering fun and engaging for kids</p>
+    <a href="#" class="btn-primary">View All Products</a>
+  </section>
+
+  <footer>
+    © 2026 <span>Tinker Maker</span>. All rights reserved.
+  </footer>
+
+</body>
+</html>
