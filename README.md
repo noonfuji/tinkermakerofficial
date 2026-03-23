@@ -1,6 +1,7 @@
 | Route | Purpose |
 |-------|---------|
 |home|landing page (hero, example products, reviews)|
+|about|who we are, why did we start|
 |products|list of all products|
 |products/product-name|page for particular product|
 |educational resources|youtube playlists for each toy|
