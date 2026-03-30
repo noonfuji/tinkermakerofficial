@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop — Tinker Maker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #3c5b91;
+      --pink: #eba9a7;
+      --pink-light: #f5c4c0;
+      --bg: #ffffff;
+      --text: #3c5b91;
+      --gray: #8a8fa8;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+    }
+
+    .logo {
+      height: 80px;
+      max-width: 500px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray);
+      font-weight: 600;
+      font-size: 1.3rem;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover { color: var(--navy); }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0; right: 0;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+    }
+
+    .cart-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--navy);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .cart-icon {
+      width: 36px; height: 36px;
+      background: var(--navy);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      transition: transform 0.2s;
+    }
+
+    .cart-btn:hover .cart-icon { transform: scale(1.1); }
+
+    /* ── FEATURES ROW ── */
+    .features-banner {
+      background: #fff;
+      padding: 32px 60px;
+      border-bottom: 1px solid rgba(235,169,167,0.25);
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+      min-width: 180px;
+      max-width: 400px;
+    }
+
+    .feature-img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .feature-text { text-align: left; }
+
+    .feature-text .feature-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .feature-text .feature-desc {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      text-align: center;
+      padding: 48px 40px 24px;
+    }
+
+    .page-header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .page-header p {
+      color: var(--gray);
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    /* ── PRODUCTS GRID ── */
+    .shop-section {
+      padding: 32px 60px 80px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 36px;
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;        /* ← changed from center */
+      gap: 0;                      /* ← changed from 12px */
+      background: #fff;
+      border: 1px solid rgba(60,91,145,0.1);
+      border-radius: 16px;
+      overflow: hidden;            /* ← added: clips image to rounded corners */
+      transition: box-shadow 0.25s, transform 0.25s;
+      animation: floatUp 0.5s ease both;
+    }
+
+    .product-card:nth-child(1) { animation-delay: 0.05s; }
+    .product-card:nth-child(2) { animation-delay: 0.1s; }
+    .product-card:nth-child(3) { animation-delay: 0.15s; }
+    .product-card:nth-child(4) { animation-delay: 0.2s; }
+    .product-card:nth-child(5) { animation-delay: 0.25s; }
+    .product-card:nth-child(6) { animation-delay: 0.3s; }
+    .product-card:nth-child(7) { animation-delay: 0.35s; }
+    .product-card:nth-child(8) { animation-delay: 0.4s; }
+
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .product-card:hover {
+      box-shadow: 0 8px 32px rgba(60,91,145,0.12);
+      transform: translateY(-4px);
+    }
+
+    .product-img-wrap {
+      width: 100%;                 /* ← changed from 200px */
+      height: 220px;               /* ← changed from 200px */
+      background: #111;            /* ← added: black background */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s;
+      flex-shrink: 0;              /* ← added: prevents squishing */
+      overflow: hidden;
+    }
+
+    .product-card:hover .product-img-wrap {
+      transform: scale(1.05);
+    }
+
+    .product-img-wrap img {
+      width: 120%;
+      height: 120%;
+      object-fit: contain;
+      padding:0px;
+    }
+
+    .product-info {
+      width: 100%;
+      text-align: center;
+      background: #fff;            /* ← added: white below the image */
+      padding: 20px 20px 24px;    /* ← added: spacing around text */
+    }
+
+    .product-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .product-desc {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 12px;
+      min-height: 36px;
+    }
+
+    .product-price {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+
+    .btn-cart {
+      width: 100%;
+      padding: 10px 0;
+      background: var(--pink);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.03em;
+    }
+
+    .btn-cart:hover {
+      background: #d96b62;
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 24px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    footer span { color: var(--pink-light); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo"><img src="public/logo/logo.png" alt="Tinker Maker Logo"></div>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="shop.html" class="active">Shop</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Resources</a></li>
+      <li><a href="#">FAQ</a></li>
+    </ul>
+    <button class="cart-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <div class="cart-icon">0</div>
+    </button>
+  </nav>
+
+  <!-- FEATURES BANNER (copied from home page) -->
+  <div class="features-banner">
+    <div class="features">
+
+      <div class="feature-item">
+        <img class="feature-img" src="public/images/icons/no-glue.png" alt="No glue needed">
+        <div class="feature-text">
+          <div class="feature-title">No Glue/Tool</div>
+          <div class="feature-desc">Snap-fit parts — no mess, no fuss</div>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <img class="feature-img" src="public/images/icons/diy.png" alt="DIY">
+        <div class="feature-text">
+          <div class="feature-title">Self Assembly</div>
+          <div class="feature-desc">Assemble everything by yourself</div>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <img class="feature-img" src="public/images/icons/transparent.png" alt="Transparent design">
+        <div class="feature-text">
+          <div class="feature-title">Transparent Design</div>
+          <div class="feature-desc">See how all components move and work together</div>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <img class="feature-img" src="public/images/icons/educational.png" alt="Educational">
+        <div class="feature-text">
+          <div class="feature-title">Educational</div>
+          <div class="feature-desc">Learn physics and engineering in a fun way</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <h1>All Products</h1>
+    <p>Pick a kit, build it yourself, and see the physics come to life.</p>
+  </div>
+
+  <!-- PRODUCTS GRID -->
+  <section class="shop-section">
+    <div class="products-grid">
+
+      <!-- ✏️ PRODUCT 1 — edit name, description, price and image src -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="public/images/products/cannon.jpg" alt="Cannon Blast">
+        </div>
+        <div class="product-info">
+          <div class="product-name">Cannon Blast</div>
+          <!-- <div class="product-desc">Launch projectiles and learn about force and motion</div> -->
+          <div class="product-price">$29.99</div>
+          <button class="btn-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- ✏️ PRODUCT 2 -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="public/images/products/beetle-car.jpg" alt="Wind Up Car">
+        </div>
+        <div class="product-info">
+          <div class="product-name">Wind Up Car</div>
+          <!-- <div class="product-desc">Build a self-propelled car powered by a wound spring</div> -->
+          <div class="product-price">$29.99</div>
+          <button class="btn-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- ✏️ PRODUCT 3 -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="public/images/products/rocket-ferris-wheel.jpg" alt="Ferris Wheel">
+        </div>
+        <div class="product-info">
+          <div class="product-name">Ferris Wheel</div>
+          <!-- <div class="product-desc">Assemble a spinning ferris wheel and explore rotational motion</div> -->
+          <div class="product-price">$34.99</div>
+          <button class="btn-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- ✏️ PRODUCT 4 — replace with your actual product -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="public/images/products/train-set.JPG" alt="Product 4">
+        </div>
+        <div class="product-info">
+          <div class="product-name">Product Name</div>
+          <!-- <div class="product-desc">Short description of what this toy does and teaches</div> -->
+          <div class="product-price">$29.99</div>
+          <button class="btn-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- ✏️ PRODUCT 5 -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="public/images/product5.png" alt="Product 5">
+        </div>
+        <div class="product-info">
+          <div class="product-name">Product Name</div>
+          <div class="product-desc">Short description of what this toy does and teaches</div>
+          <div class="product-price">$29.99</div>
+          <button class="btn-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- ✏️ PRODUCT 6 -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="public/images/product6.png" alt="Product 6">
+        </div>
+        <div class="product-info">
+          <div class="product-name">Product Name</div>
+          <div class="product-desc">Short description of what this toy does and teaches</div>
+          <div class="product-price">$29.99</div>
+          <button class="btn-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- ✏️ PRODUCT 7 -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="public/images/product7.png" alt="Product 7">
+        </div>
+        <div class="product-info">
+          <div class="product-name">Product Name</div>
+          <div class="product-desc">Short description of what this toy does and teaches</div>
+          <div class="product-price">$29.99</div>
+          <button class="btn-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- ✏️ PRODUCT 8 -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="public/images/product8.png" alt="Product 8">
+        </div>
+        <div class="product-info">
+          <div class="product-name">Product Name</div>
+          <div class="product-desc">Short description of what this toy does and teaches</div>
+          <div class="product-price">$29.99</div>
+          <button class="btn-cart">Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2026 <span>Tinker Maker</span>. All rights reserved.
+  </footer>
+
+</body>
+</html>
