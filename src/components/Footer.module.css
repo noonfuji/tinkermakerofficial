@@ -1,0 +1,42 @@
+/* ── FOOTER ── */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--navy);
+  color: rgba(255,255,255,0.5);
+  padding: 24px 60px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.footer span {
+  color: var(--pink);
+}
+
+.footerRight {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 16px;
+}
+
+.socialIcons svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--pink) !important;
+  transition: fill 0.2s;
+  display: block;
+}
+
+.socialIcons a:hover svg {
+  fill: var(--pink-light) !important;
+}
+
+.contactText {
+  color: rgba(255,255,255,0.5);
+}

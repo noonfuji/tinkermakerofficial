@@ -1,0 +1,168 @@
+/* ── PRODUCT CARD (drawing variant - landing page) ── */
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  animation: floatUp 0.6s ease both;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.imgWrap {
+  width: 100%;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.imgWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cardBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--navy);
+  padding: 16px 20px;
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.description {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+}
+
+.cartIconBtn {
+  width: 44px;
+  height: 44px;
+  background: var(--pink);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.cartIconBtn:hover {
+  background: #d96b62;
+  transform: scale(1.1);
+}
+
+.cartIconBtn svg {
+  width: 20px;
+  height: 20px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── PRODUCT CARD (shop variant - products page) ── */
+.shopCard {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  background: #fff;
+  border: 1px solid rgba(60,91,145,0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: box-shadow 0.25s, transform 0.25s;
+  animation: floatUp 0.5s ease both;
+}
+
+.shopCard:hover {
+  box-shadow: 0 8px 32px rgba(60,91,145,0.12);
+  transform: scale(1.05);
+}
+
+.shopImgWrap {
+  width: 100%;
+  height: 220px;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.shopImgWrap img {
+  width: 120%;
+  height: 120%;
+  object-fit: contain;
+}
+
+.productInfo {
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  padding: 20px 20px 24px;
+}
+
+.shopName {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.price {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+
+.shopCartBtn {
+  width: 100%;
+  padding: 10px 0;
+  background: var(--pink);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 0.03em;
+}
+
+.shopCartBtn:hover {
+  background: #d96b62;
+  transform: translateY(-2px);
+}
