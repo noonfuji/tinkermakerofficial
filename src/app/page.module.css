@@ -1,20 +1,21 @@
 /* ── HERO ── */
 .hero {
-  background: var(--navy);
+  /* background: var(--navy); */
+  background: url('/images/background/home-background.png') center bottom / cover no-repeat;
   text-align: center;
-  padding: 60px 40px 40px;
+  padding: 70px 40px 130px;
   position: relative;
   overflow: hidden;
 }
 
 .hero h1 {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
   font-weight: 700;
   color: #fff;
   line-height: 1.3;
-  max-width: 700px;
-  margin: 0 auto;
+  max-width: 70%;
+  margin: 0;
   animation: fadeDown 0.7s ease both;
 }
 
@@ -212,4 +213,82 @@
   font-weight: 800;
   font-size: 0.9rem;
   color: var(--navy);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .hero {
+    padding: 40px 16px 60px;
+  }
+
+  .hero h1 {
+    max-width: 70%;
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+  }
+
+  .productsSection {
+    padding: 20px 16px 40px;
+  }
+
+  .productsGrid {
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tagline {
+    padding: 40px 16px 100px;
+  }
+
+  .taglineContent {
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .taglineLeft {
+    max-width: 100%;
+  }
+
+  .tagline h2 {
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
+  }
+
+  .taglineIllustration {
+    max-width: 200px;
+  }
+
+  .about {
+    flex-direction: column;
+    padding: 40px 16px;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .aboutImage {
+    width: 100%;
+    height: 200px;
+  }
+
+  .featuresSection {
+    padding: 0 16px 40px;
+  }
+
+  .reviews {
+    padding: 40px 16px;
+  }
+
+  .reviews h2 {
+    font-size: 1.4rem;
+  }
+
+  .reviewsGrid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reviewCard {
+    width: 100%;
+    max-width: 350px;
+  }
 }

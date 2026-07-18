@@ -37,8 +37,7 @@ export default function Home() {
       {/* HERO */}
       <section className={styles.hero}>
         <h1>
-          Welcome to<br />
-          a World Where <span>Curiosity</span> Comes to <span>Life</span>
+          <span>Physics</span> and <span>Engineering</span> Toys for the <span>Curious</span> Minds
         </h1>
       </section>
 

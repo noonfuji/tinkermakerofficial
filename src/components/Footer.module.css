@@ -40,3 +40,13 @@
 .contactText {
   color: rgba(255,255,255,0.5);
 }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+}

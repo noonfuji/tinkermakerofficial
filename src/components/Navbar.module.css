@@ -88,3 +88,26 @@
 .cartBtn:hover .cartIcon {
   transform: scale(1.1);
 }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .nav {
+    padding: 0 16px;
+  }
+
+  .logo {
+    height: 50px;
+  }
+
+  .navLinks {
+    gap: 12px;
+  }
+
+  .navLinks a {
+    font-size: 0.8rem;
+  }
+
+  .active {
+    padding: 4px 12px !important;
+  }
+}

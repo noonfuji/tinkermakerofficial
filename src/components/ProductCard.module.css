@@ -166,3 +166,19 @@
   background: #d96b62;
   transform: translateY(-2px);
 }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .imgWrap {
+    height: 200px;
+  }
+
+  .shopCard {
+    width: 100%;
+  }
+}
