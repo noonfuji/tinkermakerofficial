@@ -47,6 +47,29 @@ body {
   transform: translateY(-2px);
 }
 
+.btn-pink {
+  display: inline-block;
+  padding: 14px 40px;
+  border: 2.5px solid var(--pink);
+  color: var(--pink);
+  background: transparent;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+
+.btn-pink:hover {
+  background: var(--pink);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
 .btn-cart {
   padding: 9px 24px;
   background: var(--pink);

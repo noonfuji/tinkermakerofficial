@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import ProductCard from '@/components/ProductCard';
 import FeaturesBanner from '@/components/FeaturesBanner';
 import { products } from '@/lib/products';
@@ -53,58 +52,32 @@ export default function Home() {
             />
           ))}
         </div>
-      </section>
-
-      {/* TAGLINE */}
-      <section className={styles.tagline}>
-        <div className={styles.taglineContent}>
-          <div className={styles.taglineLeft}>
-            {/* Paper plane decoration */}
-            <svg className={styles.paperPlane} viewBox="0 0 64 64" fill="none" stroke="var(--pink-light)" strokeWidth="2">
-              <path d="M6 34L58 6 38 58 30 36z" />
-              <path d="M30 36L58 6" />
-            </svg>
-            <h2>
-              <span>Physics</span> and <span>Engineering</span> Toys<br />
-              for the <span>Curious Mind</span>
-            </h2>
-          </div>
-          <Image
-            className={styles.taglineIllustration}
-            src="/images/windupcar-drawing.png"
-            alt="Wind up car illustration"
-            width={350}
-            height={250}
-          />
-        </div>
-        {/* Wave divider */}
-        <div className={styles.waveDivider}>
-          <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-            <path d="M0,120 C360,40 720,100 1440,20 L1440,120 Z" fill="#ffffff" />
-          </svg>
-        </div>
-      </section>
-
-      {/* ABOUT */}
-      <section>
-        <div className={styles.about}>
-          <div className={styles.aboutImage}>
-            <Image
-              src="/images/products/cannon.jpg"
-              alt="Tinker Maker product"
-              fill
-              style={{ objectFit: 'cover' }}
-            />
-          </div>
-          <div className={styles.aboutText}>
-            <h2>This is <span>Tinker Maker!</span></h2>
-          </div>
-        </div>
+        <Link href="/products" className="btn-pink" style={{ marginTop: '36px' }}>View All Products</Link>
       </section>
 
       {/* FEATURES */}
       <section className={styles.featuresSection}>
         <FeaturesBanner variant="inline" />
+      </section>
+
+      {/* ABOUT */}
+      <section>
+        <div className={styles.about}>
+          <div className={styles.aboutText}>
+            <h2><span>Who we are</span></h2>
+            <p>In this digital era, both kids and adults are exposed to a lot of screen time even while we are learning. At Tinker Maker, we want to make learning more hands on and physical. Our first set of toys will be purely mechanical. Through assembling and playing with the toys, you will get to uncover how various everyday mechanisms work - learn the different types of gears, what an escapement mechanism is used for, how a combination lock works, and much more! We are just at the start of our journey and we would love for you to be a part of it ⚙️👷🏻‍♀️👷🏻‍♂️🛠️</p>
+          </div>
+          <div className={styles.aboutVideo}>
+            <div className={styles.aboutVideoInner}>
+              <iframe
+                src="https://www.youtube.com/embed/mEuVkCxzKHU"
+                title="Tinker Maker Short"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* REVIEWS */}
