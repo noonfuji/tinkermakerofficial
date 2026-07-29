@@ -10,10 +10,11 @@ export default function Navbar() {
 
   const links = [
     { href: '/', label: 'Home' },
-    { href: '/products', label: 'Shop' },
-    { href: '#', label: 'About' },
-    { href: '#', label: 'Resources' },
-    { href: '#', label: 'FAQ' },
+    // { href: '/products', label: 'Shop' },
+    { href: 'https://www.etsy.com/shop/TinkerMakerStore', label: 'Shop' },
+    // { href: '#', label: 'About' },
+    { href: 'https://www.youtube.com/@TinkerMaker/shorts', label: 'Resources' },
+    // { href: '#', label: 'FAQ' },
   ];
 
   return (
@@ -28,6 +29,7 @@ export default function Navbar() {
             <Link
               href={link.href}
               className={pathname === link.href ? styles.active : ''}
+              {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
             >
               {link.label}
             </Link>
@@ -35,14 +37,16 @@ export default function Navbar() {
         ))}
       </ul>
 
-      <button className={styles.cartBtn}>
+      {/* <button className={styles.cartBtn}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="9" cy="21" r="1" />
           <circle cx="20" cy="21" r="1" />
           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
         </svg>
         <div className={styles.cartIcon}>2</div>
-      </button>
+      </button> */}
+      {/* Cart button hidden but preserving layout space */}
+      <div className={styles.cartBtn} style={{ visibility: 'hidden' }} />
     </nav>
   );
 }

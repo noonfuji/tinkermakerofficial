@@ -28,7 +28,7 @@ const reviews = [
   },
 ];
 
-const showcaseProducts = products.filter((p) => p.drawingImage).slice(0, 3);
+const showcaseProducts = products.filter((p) => p.productImage).slice(0, 3);
 
 export default function Home() {
   return (
@@ -52,7 +52,10 @@ export default function Home() {
             />
           ))}
         </div>
-        <Link href="/products" className="btn-pink" style={{ marginTop: '36px' }}>View All Products</Link>
+        {/* <Link href="/products" className="btn-pink" style={{ marginTop: '36px' }}>View All Products</Link> */}
+        <a href="https://www.etsy.com/shop/TinkerMakerStore" className="btn-pink" style={{ marginTop: '36px' }} target="_blank" rel="noopener noreferrer">
+          View All Products
+        </a>
       </section>
 
       {/* FEATURES */}
@@ -64,8 +67,16 @@ export default function Home() {
       <section>
         <div className={styles.about}>
           <div className={styles.aboutText}>
-            <h2><span>Who we are</span></h2>
-            <p>In this digital era, both kids and adults are exposed to a lot of screen time even while we are learning. At Tinker Maker, we want to make learning more hands on and physical. Our first set of toys will be purely mechanical. Through assembling and playing with the toys, you will get to uncover how various everyday mechanisms work - learn the different types of gears, what an escapement mechanism is used for, how a combination lock works, and much more! We are just at the start of our journey and we would love for you to be a part of it ⚙️👷🏻‍♀️👷🏻‍♂️🛠️</p>
+            <h2><span>Who We Are</span></h2>
+            <p style={{ marginBottom: '24px' }}>At Tinker Maker, we want to make learning physics and engineering more fun! 
+              We make mechanical toys for the curious minds under the concept of <strong><em>Uncover Everyday Mechanisms</em></strong>. 
+              Our goal is to help people have a better understanding of the physical world around them.</p>
+            <h2><span>Our Mission</span></h2>
+            <p>1. Learning without screens - We want to get people excited about learning physics and engineering in our 
+              everyday life. Our toys enable people to spend their time learning without being online.</p>
+            <p>2. Creating a repair culture - We hope that a better understanding of the physical world will empower people with 
+              the knowledge and confidence to fix many of the items around them instead of purchasing 
+              new ones, creating a repair culture.</p>
           </div>
           <div className={styles.aboutVideo}>
             <div className={styles.aboutVideoInner}>

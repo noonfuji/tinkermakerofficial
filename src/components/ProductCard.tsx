@@ -34,7 +34,7 @@ export default function ProductCard({ product, variant = 'drawing', animationDel
     <div className={styles.card} style={animationDelay ? { animationDelay } : undefined}>
       <div className={styles.imgWrap}>
         <Image
-          src={product.drawingImage}
+          src={product.productImage}
           alt={product.name}
           width={300}
           height={280}
@@ -44,15 +44,15 @@ export default function ProductCard({ product, variant = 'drawing', animationDel
       <div className={styles.cardBottom}>
         <div className={styles.cardInfo}>
           <div className={styles.name}>{product.name}</div>
-          <div className={styles.description}>Short Description</div>
+          {/* <div className={styles.description}>Short Description</div> */}
         </div>
-        <button className={styles.cartIconBtn}>
+        {/* <button className={styles.cartIconBtn}>
           <svg viewBox="0 0 24 24">
             <circle cx="9" cy="21" r="1" />
             <circle cx="20" cy="21" r="1" />
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
           </svg>
-        </button>
+        </button> */}
       </div>
     </div>
   );
