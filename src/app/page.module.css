@@ -1,0 +1,240 @@
+/* ── HERO ── */
+.hero {
+  /* background: var(--navy); */
+  background: url('/images/background/home-background.png') center bottom / cover no-repeat;
+  text-align: center;
+  padding: 70px 40px 130px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+  max-width: 70%;
+  margin: 0;
+  animation: fadeDown 0.7s ease both;
+}
+
+.hero h1 span {
+  color: var(--pink);
+}
+
+/* ── PRODUCTS SHOWCASE ── */
+.productsSection {
+  /* background: var(--navy); */
+  padding: 40px 40px 0px;
+  margin-top: -120px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.productsGrid {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+
+/* ── FEATURES SECTION ── */
+.featuresSection {
+  background: #fff;
+  padding: 10px 40px 20px;
+}
+
+/* ── ABOUT SECTION ── */
+.about {
+  background: var(--navy);
+  padding: 60px 40px 80px;
+  display: flex;
+  align-items: center;
+}
+
+.aboutText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-left: 60px;
+}
+
+.aboutVideo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.aboutVideoInner {
+  width: 280px;
+  height: 500px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.aboutVideoInner iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.aboutText h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.3;
+}
+
+.aboutText h2 span {
+  color: var(--pink);
+}
+
+.aboutText p {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.7;
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* ── REVIEWS ── */
+.reviews {
+  background: #f9f3f2;
+  padding: 64px 60px;
+  text-align: center;
+}
+
+.reviews h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 36px;
+}
+
+.reviewsGrid {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.reviewCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px 24px;
+  width: 350px;
+  text-align: left;
+  box-shadow: 0 2px 16px rgba(45,58,107,0.07);
+  animation: floatUp 0.6s ease both;
+}
+
+.stars {
+  color: #f5a623;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.reviewText {
+  color: #555e7a;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.reviewer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reviewerAvatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--pink-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.reviewerName {
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--navy);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .hero {
+    padding: 40px 16px 60px;
+  }
+
+  .hero h1 {
+    max-width: 70%;
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+  }
+
+  .productsSection {
+    padding: 20px 16px 40px;
+    margin-top: 0;
+  }
+
+  .productsGrid {
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about {
+    flex-direction: column;
+    padding: 40px 16px;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .aboutText {
+    padding-left: 0;
+  }
+
+  /* .aboutVideoInner {
+    width: 100%;
+    height: 400px;
+  } */
+
+  .featuresSection {
+    padding: 0 16px 40px;
+  }
+
+  .reviews {
+    padding: 40px 16px;
+  }
+
+  .reviews h2 {
+    font-size: 1.4rem;
+  }
+
+  .reviewsGrid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reviewCard {
+    width: 100%;
+    max-width: 350px;
+  }
+}
