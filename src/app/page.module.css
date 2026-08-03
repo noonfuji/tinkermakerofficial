@@ -1,16 +1,22 @@
 /* ── HERO ── */
 .hero {
-  /* background: var(--navy); */
-  background: url('/images/background/windupcar_bg.svg') calc(50% + 80px) calc(100% + 40px) / 130% no-repeat;
   text-align: center;
   padding: 60px 40px 130px;
   position: relative;
-  overflow: hidden;
+}
+
+/* Background bleeds past the hero so the wave sits behind the product cards */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 -60px 0;
+  background: url('/images/background/windupcar_bg.svg') calc(50% + 80px) bottom / 130% no-repeat;
+  z-index: -1;
 }
 
 .hero h1 {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
   font-weight: 700;
   color: #fff;
   line-height: 1.3;
@@ -184,9 +190,21 @@
     padding: 40px 16px 60px;
   }
 
+  /* Shorter bleed: the products section no longer overlaps the hero on mobile */
+  .hero::before {
+    inset: 0 0 -60px 0;
+    background-size: 220%;
+    background-position: calc(50% - 20px) bottom;
+  }
+
   .hero h1 {
     max-width: 70%;
     font-size: clamp(1.2rem, 5vw, 1.6rem);
+  }
+
+  /* Let the heading wrap naturally instead of at the hardcoded break */
+  .heroBreak {
+    display: none;
   }
 
   .productsSection {

@@ -36,7 +36,7 @@ export default function Home() {
       {/* HERO */}
       <section className={styles.hero}>
         <h1>
-          <span>Physics</span> and <span>Engineering</span> Toys <br />
+          <span>Physics</span> and <span>Engineering</span> Toys <br className={styles.heroBreak} />
            for the <span>Curious</span> Minds
         </h1>
       </section>
