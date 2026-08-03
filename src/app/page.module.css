@@ -1,9 +1,9 @@
 /* ── HERO ── */
 .hero {
   /* background: var(--navy); */
-  background: url('/images/background/home-background.png') center bottom / cover no-repeat;
+  background: url('/images/background/windupcar_bg.svg') calc(50% + 80px) calc(100% + 40px) / 130% no-repeat;
   text-align: center;
-  padding: 100px 40px 130px;
+  padding: 60px 40px 130px;
   position: relative;
   overflow: hidden;
 }
